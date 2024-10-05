@@ -45,10 +45,10 @@ denominator <- totals$Column3 - length(sales_price) * (x_median)^2
 coeficient_a <- numerator / denominator
 coeficient_b <- y_median - (coeficient_a * x_median)
 
-# estimate y when x = 31
+# estimate demand when x = 31
 x_value <- 31
 estimate_y <- coeficient_a * x_value + coeficient_b
 
 cat("Coeficient a:", coeficient_a, "\n")
 cat("Coeficient b:", coeficient_b, "\n")
-cat("Estimatted Y value when X = ", x_value, ":", estimate_y, "\n")
+cat("Estimated Y value when X = ", x_value, ":", estimate_y, "\n")
