@@ -21,20 +21,51 @@ Temos 22 variáveis e 2938 observações. As variáveis são:
 * **Status:** se o país é desenvolvido ou está em desenvolvimento;
 * **Life.expectancy:** expectativa de vida
 * **Adult.Mortality:** taxa de mortalidade de ambos os sexos (dada pela probabilidade de falecer entre os 15 e os 60 anos, por mil habitantes)
-* **Country:** consumo de álcool per capita (15+) medido em litros de álcool puro;
+* **Alcohol:** consumo de álcool per capita (15+) medido em litros de álcool puro;
 * **percentage.expenditure:** gastos com saúde em porcentagem do PTR per capita;
-* **Hepatitis.B:** 
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
-* **Country:**
+* **Hepatitis.B:** cobertura da imunização contra hepatite B entre criançasde 1 ano (%);
+* **Measles:** número de cass desarampo notificados por 1mil habitantes;
+* **BMT:** Índice de massa corporal medio de toda população;
+* **under.five.deaths:** número de mortsde menores de cino anos por 1000 habitantes;
+* **Polio:** cobertura de imunização contra poliomielite (Pol3) entre crianças de 1 ano (%);
+* **Total.expenditure:** gastos do governo geral com saúde como uma porcentagem dos gastos totais do governo (%);
+* **Diphtheria:** cobertura de imunização de toxóide tetânico diftérico e coqueluche (DTP3) entre criançasde 1 ano de idade (%);
+* **HIV.AIDS:** mortes por 1.000 nascidos vivos HIV / AIDS (0-4 anos);
+* **GDP:** produto interno bruto per capita (em dólares americanos)
+* **Population:** população do país;
+* **thinness..1.19.years:** prevalência de magreza entre crianças eadolescentes de 10 a 19 anos (%);
+* **thiness.5.9.years:** prevalência de magreza entre crianças de 5 a 9 anos (%);
+* **Income.composition.of.resources:** Índice de Desenvolvimento Humanoem termos de composiçãode renda dos recursos (Índice que varia de 0 a 1);
+* **Schooling:** Númerode anos de escolaridade (anos);
+
+# Objetivos
+
+Usar regressão linear múltiplapara predizer a expectativa de vida.
+
+# 1. Leitura dos dados
+
+### Leituados dados
+```{r}
+df <- read.csv2('life.csv', sep = ',')
+df <- %% relocate(Life.expectancy, .after = last_col())
+```
+
+Podemos ver que algumas das variáveis numéricas estão com caracter. Vamos resolver isto, mas antes de fazer a conversão, vamos contar o número de NA's (quandonão é possível converter para numérico NA é inserido).
+
+### Quantidade de NA
+```{r}
+df.NA <- apply(df, 2, function(x) sum(is.na(x))
+df.NA[which(df.NA != 0)] %% kbl() %% kable_styling()
+```
+
+Temos quatro variáveis com NA, sendo uma delas bem preocupante por conter 553 valores perdidos dentre 2938 observações (18,8%).
+
+### Verificando entradas vazias
+
+Pode ocorrer de em algumas células vazias sejam lidas comoum texto vazio da forma `''`. Vamos verificar este fato:
+```{r}
+df_blank <- apply(df, 2, function(x) length(which(x == '')))
+df_blank[which(df_blank != 0] %% kbl() %% kable_styling()
+```
+
+Temos 10 variáveis com valores faltantes sendo a população e o GPD as variáveis mais afetadas.
