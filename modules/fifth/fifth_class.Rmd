@@ -1,0 +1,40 @@
+```{r message=FALSE, warning=FALSE}
+    rm(list = ls())
+    library(MASS)
+    library(caret)
+    library(broom)
+    library(dplyr)
+    library(plotly)
+    library(glmulti)
+    library(kableExtra)
+    library(summarytools)
+```
+
+# Introdução
+
+Vamos trabalhar com um conjunto de dados de expectativa de vida de 193 países no período de 2000 a 2015.
+
+Temos 22 variáveis e 2938 observações. As variáveis são:
+
+* **Country:** países;
+* **Year:** anos;
+* **Status:** se o país é desenvolvido ou está em desenvolvimento;
+* **Life.expectancy:** expectativa de vida
+* **Adult.Mortality:** taxa de mortalidade de ambos os sexos (dada pela probabilidade de falecer entre os 15 e os 60 anos, por mil habitantes)
+* **Country:** consumo de álcool per capita (15+) medido em litros de álcool puro;
+* **percentage.expenditure:** gastos com saúde em porcentagem do PTR per capita;
+* **Hepatitis.B:** 
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
+* **Country:**
